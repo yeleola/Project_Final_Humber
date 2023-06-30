@@ -31,7 +31,7 @@
 
          - network 0.0.0.0 255.255.255.255 area 0
 
-        parents: router ospf 16
+        parents: no router ospf 16
 
 - hosts: R1
 
