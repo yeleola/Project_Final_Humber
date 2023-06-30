@@ -27,10 +27,10 @@
       ios_config:
 
         lines:
-
+         - router 30
          - network 0.0.0.0 255.255.255.255 area 0
 
-        parents: router ospf 16
+        parents: router ospf 30
 
 - hosts: R1
 
