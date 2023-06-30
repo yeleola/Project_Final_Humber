@@ -27,11 +27,11 @@
       ios_config:
 
         lines:
-         - no router ospf 16
+         - no router ospf 2
 
          - network 0.0.0.0 255.255.255.255 area 0
 
-        parents: no router ospf 16
+        parents: no router ospf 2
 
 - hosts: R1
 
