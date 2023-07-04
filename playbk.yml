@@ -54,6 +54,19 @@
 
         parents: int e1/0
 
+    - name: configure loopback interface for R1
+
+      ios_config:
+
+        lines:
+
+           - ip add 1.1.1.1 255.255.255.255
+
+           - no shutdown
+
+        parents: int loopback 0
+
+
 - hosts: R2
 
   gather_facts: false
