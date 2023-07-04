@@ -1,123 +1,37 @@
---
+---
 
-
-
-- hosts: routers
-
-  gather_facts: false
-
+- name: config
+  hosts: routers
   connection: network_cli
-
-
-
+  gather_facts: no 
   tasks:
+     - name: configure provider1
+       set_fact:
+         provider:
+           username: admin
+           password: admin 
 
-#    - name: change Hostname omoyele
+      - name: set hostname
+        ios_config:
+          provider:  "{{ R1 }}"
+          lines: hostname {{ inventory_hostname}}
 
- #     ios_config: 
+      - name: Interface IP 
+        ios_config:
+           provider: "{{ R1 }}"
+           lines: 
+           - ip add 192.168.78.1 255.255.255.255.0
+           - no shu 
+           - full-duple
+           parents: e1/0
 
- #       lines: 
+      - name: Interface IP 
+        ios_config:
+           provider: "{{ R1 }}"
+           lines: 
+           - ip add 10.10.78.1 255.255.255.255.0
+           - no shu 
+           - full-duple
+           parents: s2/0
+    
 
-  #        - hostname R1
-
-
-
-    - name: Run ospf
-
-      ios_config:
-
-        lines:
-         - router 30
-         - network 0.0.0.0 255.255.255.255 area 0
-
-        parents: router ospf 30
-
-- hosts: R1
-
-  gather_facts: false
-
-  connection: network_cli
-
-
-
-  tasks:
-
-    - name: configure int e1/0 interface
-
-      ios_config:
-
-        lines:
-
-           - ip add 192.168.3.1 255.255.255.0
-
-           - no shutdown
-
-        parents: int e1/0
-
-- hosts: R2
-
-  gather_facts: false
-
-  connection: network_cli
-
-
-
-  tasks:
-
-    - name: configure int e1/0 interface
-
-      ios_config:
-
-        lines:
-
-           - ip add 192.168.10.1 255.255.255.0
-
-           - no shutdown
-
-        parents: int e1/0
-
-    - name: configure int s2/0 interface
-
-      ios_config:
-
-        lines:
-
-           - ip add 20.20.20.210 255.255.255.0
-
-           - no shutdown
-
-        parents: int s2/0
-
-- hosts: R3
-
-  gather_facts: false
-
-  connection: network_cli
-
-
-
-  tasks:
-
-    - name: configure int e1/0 interface
-
-      ios_config:
-
-        lines:
-
-           - ip add 192.168.100.1 255.255.255.0
-
-           - no shutdown
-
-        parents: int e1/0
-
-    - name: configure int s2/0 interface
-
-      ios_config:
-
-        lines:
-
-           - ip add 172.27.111.250 255.255.255.0
-
-           - no shutdown
-
-        parents: int s2/0
