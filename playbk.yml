@@ -12,7 +12,7 @@
            password: admin 
 
       - name: set hostname
-        ios_config:
+          ios_config:
           provider:  "{{ R1 }}"
           lines: hostname {{ inventory_hostname}}
 
