@@ -20,7 +20,11 @@
         ios_config:
            provider: "{{ R1 }}"
            lines: 
+<<<<<<< HEAD
            - ip add 192.168.78.1 255.255.255.255.0
+=======
+           - ip add 192.168.28.1 255.255.255.255.0
+>>>>>>> 2375d09 (Provider2)
            - no shu 
            - full-duple
            parents: e1/0
@@ -29,7 +33,11 @@
         ios_config:
            provider: "{{ R1 }}"
            lines: 
+<<<<<<< HEAD
            - ip add 10.10.78.1 255.255.255.255.0
+=======
+           - ip add 10.10.28.1 255.255.255.255.0
+>>>>>>> 2375d09 (Provider2)
            - no shu 
            - full-duple
            parents: s2/0
