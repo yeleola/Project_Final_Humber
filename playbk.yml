@@ -154,7 +154,7 @@
         parents: int s2/0
 
 
-      -  - name: configure loopback for r3
+    - name: configure loopback for r3
 
       ios_config:
 
