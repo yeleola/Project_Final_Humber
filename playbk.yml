@@ -30,7 +30,7 @@
 
          - network 0.0.0.0 255.255.255.255 area 0
 
-        parents: router ospf 16
+        parents: router ospf 200
 
 - hosts: R1
 
@@ -48,7 +48,7 @@
 
         lines:
 
-           - ip add 192.168.249.1 255.255.255.0
+           - ip add 192.168.200.1 255.255.255.0
 
            - no shutdown
 
@@ -60,7 +60,7 @@
 
         lines:
 
-           - ip add 1.1.1.1 255.255.255.255
+           - ip add 1.1.1.1 255.255.255.240
 
            - no shutdown
 
