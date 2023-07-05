@@ -46,7 +46,9 @@
 
       ios_config:
 
-        lines:
+        lines:  
+        
+           - descri omoyele
 
            - ip add 192.168.200.1 255.255.255.0
 
