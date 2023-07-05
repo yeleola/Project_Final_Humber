@@ -153,3 +153,15 @@
 
         parents: int s2/0
 
+
+      -  - name: configure loopback for r3
+
+      ios_config:
+
+        lines:
+
+           - ip add 33.33.33.33 255.255.255.255
+           - descr EngrAmin
+           - no shutdown
+
+        parents: int loopback 20
