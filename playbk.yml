@@ -111,9 +111,8 @@
 
         lines:
 
-           - ip add 2.2.2.2 255.255.255.248
-
-        parents: int loopback 0
+           - ip add 2.2.2.2 255.255.255.0
+           parents: loopback 0
 
 
 
