@@ -95,7 +95,7 @@
 
         lines:
 
-           - ip add 20.20.20.210 255.255.255.0
+           - ip add 21.20.20.210 255.255.255.0
 
            - no shutdown
 
@@ -110,7 +110,7 @@
         lines:
 
            - ip add 2.2.2.2 255.255.255.255
-           
+
         parents: loopback 0
 
 
