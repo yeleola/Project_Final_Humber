@@ -109,7 +109,7 @@
 
         lines:
 
-           - ip add 2.2.2.2 255.255.255.0
+           - ip add 2.2.2.2 255.255.255.255
 
         parents: int loopback 0
 
