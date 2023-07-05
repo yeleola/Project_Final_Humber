@@ -161,7 +161,7 @@
         lines:
 
            - ip add 33.33.33.33 255.255.255.255
-           - descr EngrAmin
+           - description EngrAmin
            - no shutdown
 
         parents: int loopback 20
