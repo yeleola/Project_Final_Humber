@@ -101,6 +101,22 @@
 
         parents: int s2/0
 
+
+
+    - name: configre loopback
+
+      ios_config:
+
+        lines:
+
+           - ip add 2.2.2.2 255.255.255.255
+           parents: loopback 0
+
+
+
+
+
+
 - hosts: R3
 
   gather_facts: false
