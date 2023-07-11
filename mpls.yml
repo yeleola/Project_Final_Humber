@@ -137,7 +137,7 @@
 
 
 
-      - hosts: R3
+     - hosts: R3
 
        gather_facts: no 
 
