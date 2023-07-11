@@ -87,7 +87,7 @@
               lines: 
                  - ip vrf omoyele
                  - rd 100:100
-                 - route-target both 100:100
+                 - route-target 100:100
               
              
 
