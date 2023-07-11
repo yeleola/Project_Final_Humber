@@ -71,7 +71,7 @@
 
       connection: network_cli
 
-        tasks: 
+      tasks: 
           - name: Configure s2/0
             ios_config: 
               provider: "{{ allrouters }}"
