@@ -85,7 +85,7 @@
        ios_config: 
           #   provider: "{{ allrouters }}"
               lines: 
-                 - ip vrf omoyele
+                 - ip vrf yele
                  - rd 100:101
                  - route-target both 100:101
               
@@ -95,7 +95,7 @@
        ios_config: 
     #          provider: "{{ allrouters }}"
               lines: 
-                 - ip vrf forwarding omoyele         
+                 - ip vrf forwarding yele         
                  - ip add 10.10.20.1 255.255.255.0
                  - no shu
               
@@ -119,7 +119,7 @@
       #        provider: "{{ allrouters }}"
               lines: 
                           
-                 - ip route vrf omoyele 192.168.200.0 255.255.255.0 10.10.20.2   
+                 - ip route vrf yele 192.168.200.0 255.255.255.0 10.10.20.2   
          
 
      - name: Configure BGP
@@ -131,7 +131,7 @@
                  - address-family vpn4 uni 
                  - neig 3.3.3.3 activate
                  - neig 3.3.3.3 send-community both 
-                 - address-family ipv4 vrf omoyele
+                 - address-family ipv4 vrf yele
                  - redis  connected
                  - redis static
                  
@@ -160,7 +160,7 @@
         ios_config: 
          #    provider: "{{ allrouters }}"
              lines: 
-                 - ip vrf omoyele
+                 - ip vrf yele
                  - rd 100:101
                  - route-target both 100:101
               
@@ -170,7 +170,7 @@
         ios_config: 
           #   provider: "{{ allrouters }}"
              lines: 
-                 - ip vrf omoyele forwarding         
+                 - ip vrf forwarding yele        
                  - ip add 10.10.10.1 255.255.255.252
                  - no shu
               
@@ -193,7 +193,7 @@
            # provider: "{{ allrouters }}"
              lines: 
                           
-                 - ip vrf omoyele route 10.10.100.0 255.255.255.0 10.10.10.2  
+                 - ip route vrf yele 10.10.100.0 255.255.255.0 10.10.10.2  
                  
               
           
@@ -207,7 +207,7 @@
                  - address-family vpn4 uni 
                  - neig 3.3.3.3 activate
                  - neig 3.3.3.3 send-community both 
-                 - address-family ipv4 vrf omoyele
+                 - address-family ipv4 vrf yele
                  - redis  connected
                  - redis static
                  
