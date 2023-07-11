@@ -14,7 +14,7 @@
 
       - name: Create provider for routers
 
-         set fact: 
+        set fact: 
 
           allrouters: 
             host: "{{ invenrtory_hostname}}"
