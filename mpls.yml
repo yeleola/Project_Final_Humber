@@ -12,14 +12,14 @@
 
   tasks:
 
-     - name: Create provider for routers
+      - name: Create provider for routers
 
-       set fact: 
+        set fact: 
 
-          allrouters: 
-            host: "{{ invenrtory_hostname}}"
-            username : "admin" 
-            password : "admin"
+        allrouters: 
+          host: "{{ invenrtory_hostname}}"
+          username : "admin" 
+          password : "admin"
 
 
 
@@ -196,7 +196,7 @@
           
 
       - name: Configure BGP
-        ios_config: 
+       ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - neig 2.2.2.2 remote-as 1
