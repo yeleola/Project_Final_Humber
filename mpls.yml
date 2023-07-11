@@ -83,11 +83,11 @@
 
      - name: Configure vrf for R2
        ios_config: 
-   #           provider: "{{ allrouters }}"
+          #   provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele
                  - rd 100:100
-                 - route-target 100:100
+                 - route-target both 100:100
               
              
 
