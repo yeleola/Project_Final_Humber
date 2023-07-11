@@ -171,7 +171,7 @@
           #   provider: "{{ allrouters }}"
              lines: 
                  - vrf forwarding rich        
-                 - ip add 10.10.10.1 255.255.255.252
+                 - ip add 10.10.10.1 255.255.255.0
                  - no shu
               
              parents: int f0/0     
