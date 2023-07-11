@@ -39,7 +39,7 @@
 
       
 
-    - hosts: R1
+  - hosts: R1
 
       gather_facts: no 
 
