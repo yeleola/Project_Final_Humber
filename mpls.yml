@@ -86,8 +86,8 @@
           #   provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele
-                 - rd 100:100
-                 - route-target both 100:100
+                 - rd 100:101
+                 - route-target both 100:101
               
              
 
@@ -158,8 +158,8 @@
          #    provider: "{{ allrouters }}"
              lines: 
                  - ip vrf omoyele
-                 - rd 100:100
-                 - route-target both 100:100
+                 - rd 100:101
+                 - route-target both 100:101
               
              
 
