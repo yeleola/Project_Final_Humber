@@ -111,8 +111,8 @@
               
               parents: int loopback 0    
 
-      - name: Configure static route
-        ios_config: 
+     - name: Configure static route
+       ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                           
