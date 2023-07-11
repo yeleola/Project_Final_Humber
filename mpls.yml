@@ -16,10 +16,10 @@
 
         set fact: 
 
-         allrouters: 
-          host: "{{ invenrtory_hostname}}"
-          username: "admin" 
-          password: "admin"
+             allrouters: 
+                  host: "{{ invenrtory_hostname}}"
+                  username: "admin" 
+                  password: "admin"
 
 
 
