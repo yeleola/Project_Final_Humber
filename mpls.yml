@@ -111,12 +111,15 @@
               
               parents: int loopback 0    
 
+
+     -
+
      - name: Configure static route
        ios_config: 
       #        provider: "{{ allrouters }}"
               lines: 
                           
-                 - ip vrf omoyele route 192.168.200.0 255.255.255.0 10.10.20.2   
+                 - ip route vrf omoyele 192.168.200.0 255.255.255.0 10.10.20.2   
          
 
      - name: Configure BGP
