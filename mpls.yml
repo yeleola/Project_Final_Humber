@@ -23,11 +23,11 @@
 
 
 
- - hosts: routers
-   gather_facts: no 
-   connections: network_cli
+  - hosts: routers
+    gather_facts: no 
+    connections: network_cli
       
-      tasks: 
+    tasks: 
         - name: Run Ospf and enable mpls on the routers
           ios_config: 
             provider: "{{ allrouters }}"
