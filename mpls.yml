@@ -185,7 +185,7 @@
          
 
 
-       - name: Configure static route
+      - name: Configure static route
         ios_config: 
              provider: "{{ allrouters }}"
              lines: 
