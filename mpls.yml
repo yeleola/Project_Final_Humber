@@ -16,7 +16,7 @@
 
         set fact: 
 
-        allrouters: 
+         allrouters: 
           host: "{{ invenrtory_hostname}}"
           username : "admin" 
           password : "admin"
