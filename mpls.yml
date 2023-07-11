@@ -23,7 +23,7 @@
 
 
 
-  - hosts: routers
+   - hosts: routers
     gather_facts: no 
     connections: network_cli
       
