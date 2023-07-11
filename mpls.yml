@@ -18,8 +18,8 @@
 
          allrouters: 
           host: "{{ invenrtory_hostname}}"
-          username : "admin" 
-          password : "admin"
+          username: "admin" 
+          password: "admin"
 
 
 
