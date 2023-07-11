@@ -25,7 +25,7 @@
 
 - hosts: routers
   gather_facts: no 
-  connections: network_cli
+  connection: network_cli
       
   tasks: 
       - name: Run Ospf and enable mpls on the routers
