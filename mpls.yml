@@ -12,7 +12,7 @@
 
   tasks:
 
-    - name: Create provider for routers
+      - name: Create provider for routers
 
       set fact: 
 
