@@ -82,24 +82,24 @@
               parents: int s2/0
 
           - name: Configure vrf for R2
-           ios_config: 
-             provider: "{{ allrouters }}"
-             lines: 
+            ios_config: 
+              provider: "{{ allrouters }}"
+              lines: 
                  - ip vrf omoyele
                  - rd 100:100
                  - route-target both 100:100
               
              
 
-         - name: Configure f0/0
-           ios_config: 
-             provider: "{{ allrouters }}"
-             lines: 
+          - name: Configure f0/0
+            ios_config: 
+              provider: "{{ allrouters }}"
+              lines: 
                  - ip vrf omoyele forwarding         
                  - ip add 10.10.20.1 255.255.255.252
                  - no shu
               
-             parents: int f0/0     
+              parents: int f0/0     
 
          - name: Configure loopback 0
            ios_config: 
