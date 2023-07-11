@@ -195,8 +195,8 @@
               
           
 
-     - name: Configure BGP
-       ios_config: 
+      - name: Configure BGP
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - neig 2.2.2.2 remote-as 1
