@@ -41,11 +41,11 @@
 
   - hosts: R1
 
-      gather_facts: no 
+    gather_facts: no 
 
-      connection: network_cli
+    connection: network_cli
 
-      tasks: 
+    tasks: 
          - name: Configure s2/0
            ios_config: 
              provider: "{{ allrouters }}"
