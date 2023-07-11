@@ -133,7 +133,7 @@
                  - redis static
                  
               
-             parents: router bgp 1
+              parents: router bgp 1
 
 
 
