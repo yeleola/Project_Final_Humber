@@ -17,7 +17,7 @@
         set_fact: 
 
              allrouters: 
-                  host: "{{ invenrtory_hostname}}"
+                  host: "{{ inventory_hostname}}"
                   username: "admin" 
                   password: "admin"
 
