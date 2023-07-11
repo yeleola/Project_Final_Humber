@@ -85,7 +85,7 @@
        ios_config: 
           #   provider: "{{ allrouters }}"
               lines: 
-                 - ip vrf rich
+                 - vrf definition rich
                  - rd 100:101
                  - route-target both 100:101
               
@@ -95,7 +95,7 @@
        ios_config: 
     #          provider: "{{ allrouters }}"
               lines: 
-                 - ip vrf forwarding rich         
+                 - vrf forwarding rich         
                  - ip add 10.10.20.1 255.255.255.0
                  - no shu
               
@@ -160,7 +160,7 @@
         ios_config: 
          #    provider: "{{ allrouters }}"
              lines: 
-                 - ip vrf rich
+                 - vrf definition rich
                  - rd 100:101
                  - route-target both 100:101
               
@@ -170,7 +170,7 @@
         ios_config: 
           #   provider: "{{ allrouters }}"
              lines: 
-                 - ip vrf forwarding rich        
+                 - vrf forwarding rich        
                  - ip add 10.10.10.1 255.255.255.252
                  - no shu
               
