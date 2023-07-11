@@ -101,20 +101,20 @@
               
               parents: int f0/0     
 
-         - name: Configure loopback 0
-           ios_config: 
-             provider: "{{ allrouters }}"
-             lines: 
+          - name: Configure loopback 0
+            ios_config: 
+              provider: "{{ allrouters }}"
+              lines: 
                           
                  - ip add 2.2.2.2 255.255.255.255
                  - no shu
               
-             parents: int loopback 0    
+              parents: int loopback 0    
 
-         - name: Configure static route
-           ios_config: 
-             provider: "{{ allrouters }}"
-             lines: 
+          - name: Configure static route
+            ios_config: 
+              provider: "{{ allrouters }}"
+              lines: 
                           
                  - ip vrf omoyele route 192.168.200.0 255.255.255.0 10.10.20.2   
          
