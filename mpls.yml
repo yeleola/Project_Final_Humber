@@ -96,7 +96,7 @@
     #          provider: "{{ allrouters }}"
               lines: 
                  - ip vrf forwarding omoyele         
-                 - ip add 10.10.20.1 255.255.255.252
+                 - ip add 10.10.20.1 255.255.255.0
                  - no shu
               
               parents: int f0/0     
