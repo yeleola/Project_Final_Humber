@@ -81,7 +81,7 @@
               
               parents: int s2/0
 
-         - name: Configure vrf for R2
+          - name: Configure vrf for R2
            ios_config: 
              provider: "{{ allrouters }}"
              lines: 
