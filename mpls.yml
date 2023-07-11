@@ -23,13 +23,13 @@
 
 
 
-   - hosts: routers
-     gather_facts: no 
-     connections: network_cli
+- hosts: routers
+  gather_facts: no 
+  connections: network_cli
       
-     tasks: 
-        - name: Run Ospf and enable mpls on the routers
-          ios_config: 
+ tasks: 
+      - name: Run Ospf and enable mpls on the routers
+        ios_config: 
             provider: "{{ allrouters }}"
             lines: 
                 - netw 0.0.0.0 255.255.255.255 area 0
@@ -39,15 +39,15 @@
 
       
 
-   - hosts: R1
+- hosts: R1
 
-     gather_facts: no 
+  gather_facts: no 
 
-     connection: network_cli
+  connection: network_cli
 
-     tasks: 
-         - name: Configure s2/0
-           ios_config: 
+  tasks: 
+      - name: Configure s2/0
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - ip add 172.27.1.1 255.255.255.252
@@ -55,8 +55,8 @@
               
              parents: int s2/0
 
-         - name: Configure s2/1
-           ios_config: 
+      - name: Configure s2/1
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - ip add 172.27.2.1 255.255.255.252
@@ -65,15 +65,15 @@
              parents: int s2/1
         
 
-   - hosts: R2
+- hosts: R2
 
-     gather_facts: no 
+  gather_facts: no 
 
-     connection: network_cli
+  connection: network_cli
 
-     tasks: 
-          - name: Configure s2/0
-            ios_config: 
+  tasks: 
+     - name: Configure s2/0
+       ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                  - ip add 172.27.1.2 255.255.255.252
@@ -81,8 +81,8 @@
               
               parents: int s2/0
 
-          - name: Configure vrf for R2
-            ios_config: 
+      - name: Configure vrf for R2
+        ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele
@@ -91,8 +91,8 @@
               
              
 
-          - name: Configure f0/0
-            ios_config: 
+      - name: Configure f0/0
+        ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele forwarding         
@@ -101,8 +101,8 @@
               
               parents: int f0/0     
 
-          - name: Configure loopback 0
-            ios_config: 
+     - name: Configure loopback 0
+       ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                           
@@ -111,16 +111,16 @@
               
               parents: int loopback 0    
 
-          - name: Configure static route
-            ios_config: 
+      - name: Configure static route
+        ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                           
                  - ip vrf omoyele route 192.168.200.0 255.255.255.0 10.10.20.2   
          
 
-          - name: Configure BGP
-            ios_config: 
+      - name: Configure BGP
+        ios_config: 
               provider: "{{ allrouters }}"
               lines: 
                  - neig 3.3.3.3 remote-as 1
@@ -137,15 +137,15 @@
 
 
 
-   - hosts: R3
+- hosts: R3
 
-     gather_facts: no 
+  gather_facts: no 
 
-     connection: network_cli
+  connection: network_cli
 
-     tasks: 
-         - name: Configure s2/0
-           ios_config: 
+  tasks: 
+      - name: Configure s2/0
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - ip add 172.27.2.2 255.255.255.252
@@ -153,8 +153,8 @@
               
              parents: int s2/0
 
-         - name: Configure vrf for R3
-           ios_config: 
+     - name: Configure vrf for R3
+       ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - ip vrf omoyele
@@ -163,8 +163,8 @@
               
              
 
-         - name: Configure f0/0
-           ios_config: 
+     - name: Configure f0/0
+       ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - ip vrf omoyele forwarding         
@@ -173,8 +173,8 @@
               
              parents: int f0/0     
 
-         - name: Configure loopback 0
-           ios_config: 
+      - name: Configure loopback 0
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                           
@@ -185,8 +185,8 @@
          
 
 
-         - name: Configure static route
-           ios_config: 
+      - name: Configure static route
+        ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                           
@@ -195,8 +195,8 @@
               
           
 
-         - name: Configure BGP
-           ios_config: 
+     - name: Configure BGP
+       ios_config: 
              provider: "{{ allrouters }}"
              lines: 
                  - neig 2.2.2.2 remote-as 1
