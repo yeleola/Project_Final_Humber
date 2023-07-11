@@ -128,7 +128,7 @@
               lines: 
                  - neig 3.3.3.3 remote-as 1
                  - neig 3.3.3.3 update-source loopback 0        
-                 - address-family vpn4 uni 
+                 - address-family vpnv4 uni 
                  - neig 3.3.3.3 activate
                  - neig 3.3.3.3 send-community both 
                  - address-family ipv4 vrf yele
@@ -204,7 +204,7 @@
              lines: 
                  - neig 2.2.2.2 remote-as 1
                  - neig 2.2.2.2 update-source loopback 0        
-                 - address-family vpn4 uni 
+                 - address-family vpnv4 uni 
                  - neig 3.3.3.3 activate
                  - neig 3.3.3.3 send-community both 
                  - address-family ipv4 vrf yele
