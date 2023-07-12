@@ -33,7 +33,7 @@
    #         #provider: "{{ allrouters }}"
     #        lines: 
      #           - netw 0.0.0.0 255.255.255.255 area 0
-      #          - mpls ldp auto
+   #             - mpls ldp auto
     #         - mpls ldp sync
        #     parents: router ospf 1 
 
