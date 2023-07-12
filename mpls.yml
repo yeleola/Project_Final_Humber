@@ -49,8 +49,8 @@
 
 
 
-       - name: Configure ip cef
-         ios_config: 
+      - name: Configure ip cef
+        ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
                  - ip cef 
@@ -89,8 +89,8 @@
 
        
                       
-        - name: RUN OSPF 
-          ios_config: 
+      - name: RUN OSPF 
+        ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
                  - router-id 1.1.1.1
@@ -100,8 +100,8 @@
               
             parents: router ospf 1
 
-        - name: Enable mpls 
-          ios_config: 
+      - name: Enable mpls 
+        ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
                  - mpls label protocol ldp 
@@ -124,8 +124,8 @@
                  - ip cef 
 
   
-     - name: Configure s2/0
-       ios_config: 
+      - name: Configure s2/0
+        ios_config: 
   #            provider: "{{ allrouters }}"
               lines: 
                  - ip add 172.27.1.2 255.255.255.252
@@ -136,8 +136,8 @@
 
     
 
-     - name: Configure vrf for R2
-       ios_config: 
+      - name: Configure vrf for R2
+        ios_config: 
           #   provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele
@@ -146,8 +146,8 @@
               
              
 
-     - name: Configure f0/0
-       ios_config: 
+      - name: Configure f0/0
+        ios_config: 
     #          provider: "{{ allrouters }}"
               lines: 
                  - ip vrf forwarding omoyele         
@@ -156,8 +156,8 @@
               
               parents: int f0/0     
 
-     - name: Configure loopback 0
-       ios_config: 
+      - name: Configure loopback 0
+        ios_config: 
      #         provider: "{{ allrouters }}"
               lines: 
                           
@@ -190,16 +190,16 @@
 
      
 
-     - name: Configure static route
-       ios_config: 
+      - name: Configure static route
+        ios_config: 
       #        provider: "{{ allrouters }}"
               lines: 
                           
                  - ip route vrf omoyele 192.168.200.0 255.255.255.0 10.10.20.2   
          
 
-     - name: Configure BGP
-       ios_config: 
+      - name: Configure BGP
+        ios_config: 
        #       provider: "{{ allrouters }}"
               lines: 
                  - neig 3.3.3.3 remote-as 1
@@ -224,8 +224,8 @@
 
   tasks: 
 
-       - name: Configure ip cef
-         ios_config: 
+      - name: Configure ip cef
+        ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
                  - ip cef 
@@ -278,7 +278,7 @@
                  - mpls label protocol ldp 
                  - mpls ldp router-id loopback 0
 
-       - name: RUN OSPF 
+      - name: RUN OSPF 
         ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
