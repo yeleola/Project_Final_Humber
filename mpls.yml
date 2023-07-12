@@ -29,7 +29,7 @@
       
 # tasks: 
  #     - name: Run Ospf and enable mpls on the routers
-  #     ios_config: 
+        #     ios_config: 
    #         #provider: "{{ allrouters }}"
     #        lines: 
     #          - netw 0.0.0.0 255.255.255.255 area 0
