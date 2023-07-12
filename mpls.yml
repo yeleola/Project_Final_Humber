@@ -55,6 +55,7 @@
              lines: 
                  - ip cef 
                  
+                 
       - name: Configure s2/0
         ios_config: 
 #             provider: "{{ allrouters }}"
