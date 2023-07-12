@@ -1,0 +1,284 @@
+---
+
+ 
+
+- hosts: routers
+
+  gather_facts: no 
+
+  connection: network_cli
+
+
+
+  tasks:
+
+      - name: Create provider for routers
+
+        set_fact: 
+
+             allrouters: 
+                  host: "{{ inventory_hostname}}"
+                  username: "admin" 
+                  password: "admin"
+
+
+
+#- hosts: routers
+ # gather_facts: no 
+#  connection: network_cli
+      
+# tasks: 
+ #     - name: Run Ospf and enable mpls on the routers
+  #      ios_config: 
+   #         #provider: "{{ allrouters }}"
+    #        lines: 
+     #           - netw 0.0.0.0 255.255.255.255 area 0
+      #          - mpls ldp auto
+       #         - mpls ldp sync
+       #     parents: router ospf 1 
+
+      
+
+- hosts: R1
+
+  gather_facts: no 
+
+  connection: network_cli
+
+  tasks: 
+      - name: Configure s2/0
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - ip add 172.27.1.1 255.255.255.252
+                 - no shu
+                 - mpls ip 
+              
+             parents: int s2/0
+      - name: Configure loopback 0
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - ip add 1.1.1.1 255.255.255.252
+                 - no shu
+                 - 
+              
+             parents: int loopback 0     
+      
+      - name: Configure s2/1
+        ios_config: 
+ #            provider: "{{ allrouters }}"
+             lines: 
+                 - ip add 172.27.2.1 255.255.255.252
+                 - no shu
+                 - mpls ip 
+              
+             parents: int s2/1
+
+        - name: Configure mpls interface 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - mpls label protocol ldp 
+                 - mpls ldp router-id loopback 0
+              
+             
+
+    
+        - name: RUN OSPF 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - router-id 1.1.1.1
+                 - netw 1.1.1.1 0.0.0.0 area 0
+                 - netw 172.27.2.0 0.0.0.3 area 0 
+                 - netw 172.27.1.0 0.0.0.3 area 0
+              
+            parents: router ospf 1
+        
+
+- hosts: R2 
+
+  gather_facts: no 
+
+  connection: network_cli
+
+  tasks: 
+     - name: Configure s2/0
+       ios_config: 
+  #            provider: "{{ allrouters }}"
+              lines: 
+                 - ip add 172.27.1.2 255.255.255.252
+                 - no shu
+              
+              parents: int s2/0
+
+    
+
+     - name: Configure vrf for R2
+       ios_config: 
+          #   provider: "{{ allrouters }}"
+              lines: 
+                 - ip vrf omoyele
+                 - rd 100:101
+                 - route-target both 100:101
+              
+             
+
+     - name: Configure f0/0
+       ios_config: 
+    #          provider: "{{ allrouters }}"
+              lines: 
+                 - ip vrf forwarding omoyele         
+                 - ip add 10.10.20.1 255.255.255.252
+                 - no shu
+              
+              parents: int f0/0     
+
+     - name: Configure loopback 0
+       ios_config: 
+     #         provider: "{{ allrouters }}"
+              lines: 
+                          
+                 - ip add 2.2.2.2 255.255.255.255
+                 - no shu
+              
+              parents: int loopback 0  
+
+      - name: Configure mpls interface 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - mpls label protocol ldp 
+                 - mpls ldp router-id loopback 0
+      
+      - name: RUN OSPF 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - router-id 2.2.2.2
+                 - netw 2.2.2.2 0.0.0.0 area 0
+                 - netw 172.27.1.0 0.0.0.3 area 0
+              
+             parents: router ospf 1
+
+
+     
+
+     - name: Configure static route
+       ios_config: 
+      #        provider: "{{ allrouters }}"
+              lines: 
+                          
+                 - ip route vrf omoyele 192.168.200.0 255.255.255.0 10.10.20.2   
+         
+
+     - name: Configure BGP
+       ios_config: 
+       #       provider: "{{ allrouters }}"
+              lines: 
+                 - neig 3.3.3.3 remote-as 1
+                 - neig 3.3.3.3 update-source loopback 0        
+                 - address-family vpnv4 uni 
+                 - neig 3.3.3.3 activate
+                 - neig 3.3.3.3 send-community both 
+                 - address-family ipv4 vrf omoyele
+                 - redis  connected
+                 - redis static
+                 
+              
+              parents: router bgp 1
+
+
+
+- hosts: R3
+
+  gather_facts: no 
+
+  connection: network_cli
+
+  tasks: 
+      - name: Configure s2/0
+        ios_config: 
+        #     provider: "{{ allrouters }}"
+             lines: 
+                 - ip add 172.27.2.2 255.255.255.252
+                 - no shu
+                 - mpls ip 
+              
+             parents: int s2/0
+
+      - name: Configure vrf for R3
+        ios_config: 
+         #    provider: "{{ allrouters }}"
+             lines: 
+                 - ip vrf omoyele
+                 - rd 100:101
+                 - route-target both 100:101
+              
+             
+
+      - name: Configure f0/0
+        ios_config: 
+          #   provider: "{{ allrouters }}"
+             lines: 
+                 - ip vrf forwarding omoyele        
+                 - ip add 10.10.10.1 255.255.255.252
+                 - no shu
+              
+             parents: int f0/0     
+
+      - name: Configure loopback 0
+        ios_config: 
+           #  provider: "{{ allrouters }}"
+             lines: 
+                          
+                 - ip add 3.3.3.3 255.255.255.255
+                 - no shu
+              
+             parents: int loopback 0   
+
+      - name: Configure mpls interface 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - mpls label protocol ldp 
+                 - mpls ldp router-id loopback 0
+
+       - name: RUN OSPF 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - router-id 3.3.3.3
+                 - netw 3.3.3.3 0.0.0.0 area 0
+                 - netw 172.27.2.0 0.0.0.3 area 0
+              
+             parents: router ospf 1
+         
+
+
+      - name: Configure static route
+        ios_config: 
+           # provider: "{{ allrouters }}"
+             lines: 
+                          
+                 - ip route vrf omoyele 10.10.100.0 255.255.255.0 10.10.10.2  
+                 
+              
+          
+
+      - name: Configure BGP
+        ios_config: 
+         #    provider: "{{ allrouters }}"
+             lines: 
+                 - neig 2.2.2.2 remote-as 1
+                 - neig 2.2.2.2 update-source loopback 0        
+                 - address-family vpnv4 uni 
+                 - neig 2.2.2.2 activate
+                 - neig 2.2.2.2 send-community both 
+                 - address-family ipv4 vrf omoyele
+                 - redis  connected
+                 - redis static
+                 
+              
+             parents: router bgp 1
