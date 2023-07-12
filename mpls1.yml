@@ -46,6 +46,15 @@
   connection: network_cli
 
   tasks: 
+
+
+
+       - name: Configure ip cef
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - ip cef 
+                 
       - name: Configure s2/0
         ios_config: 
 #             provider: "{{ allrouters }}"
@@ -55,6 +64,9 @@
                  - mpls ip 
               
              parents: int s2/0
+
+
+
       - name: Configure loopback 0
         ios_config: 
 #             provider: "{{ allrouters }}"
@@ -75,16 +87,8 @@
               
              parents: int s2/1
 
-        - name: Configure mpls interface 
-        ios_config: 
-#             provider: "{{ allrouters }}"
-             lines: 
-                 - mpls label protocol ldp 
-                 - mpls ldp router-id loopback 0
-              
-             
-
-    
+       
+                      
         - name: RUN OSPF 
         ios_config: 
 #             provider: "{{ allrouters }}"
@@ -95,6 +99,14 @@
                  - netw 172.27.1.0 0.0.0.3 area 0
               
             parents: router ospf 1
+
+         - name: Enable mpls 
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - mpls label protocol ldp 
+                 - mpls ldp router-id loopback 0
+                 
         
 
 - hosts: R2 
@@ -104,12 +116,21 @@
   connection: network_cli
 
   tasks: 
+
+      - name: Configure ip cef
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - ip cef 
+
+  
      - name: Configure s2/0
        ios_config: 
   #            provider: "{{ allrouters }}"
               lines: 
                  - ip add 172.27.1.2 255.255.255.252
                  - no shu
+                 - mpls ip 
               
               parents: int s2/0
 
@@ -120,8 +141,8 @@
           #   provider: "{{ allrouters }}"
               lines: 
                  - ip vrf omoyele
-                 - rd 100:101
-                 - route-target both 100:101
+                 - rd 100:100
+                 - route-target both 100:100
               
              
 
@@ -145,12 +166,16 @@
               
               parents: int loopback 0  
 
-      - name: Configure mpls interface 
+  
+
+      - name: Enable mpls 
         ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
                  - mpls label protocol ldp 
                  - mpls ldp router-id loopback 0
+
+       
       
       - name: RUN OSPF 
         ios_config: 
@@ -179,7 +204,7 @@
               lines: 
                  - neig 3.3.3.3 remote-as 1
                  - neig 3.3.3.3 update-source loopback 0        
-                 - address-family vpnv4 uni 
+                 - address-family vpnv4 
                  - neig 3.3.3.3 activate
                  - neig 3.3.3.3 send-community both 
                  - address-family ipv4 vrf omoyele
@@ -198,6 +223,14 @@
   connection: network_cli
 
   tasks: 
+
+       - name: Configure ip cef
+        ios_config: 
+#             provider: "{{ allrouters }}"
+             lines: 
+                 - ip cef 
+
+  
       - name: Configure s2/0
         ios_config: 
         #     provider: "{{ allrouters }}"
@@ -213,8 +246,8 @@
          #    provider: "{{ allrouters }}"
              lines: 
                  - ip vrf omoyele
-                 - rd 100:101
-                 - route-target both 100:101
+                 - rd 100:100
+                 - route-target both 100:100
               
              
 
@@ -238,7 +271,7 @@
               
              parents: int loopback 0   
 
-      - name: Configure mpls interface 
+      - name: Enable mpls
         ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
@@ -273,7 +306,7 @@
              lines: 
                  - neig 2.2.2.2 remote-as 1
                  - neig 2.2.2.2 update-source loopback 0        
-                 - address-family vpnv4 uni 
+                 - address-family vpnv4  
                  - neig 2.2.2.2 activate
                  - neig 2.2.2.2 send-community both 
                  - address-family ipv4 vrf omoyele
