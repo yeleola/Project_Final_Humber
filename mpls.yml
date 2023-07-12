@@ -72,9 +72,9 @@
         ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
-                 - ip add 1.1.1.1 255.255.255.252
+                 - ip add 1.1.1.1 255.255.255.255
                  - no shu
-                 - 
+                 
               
              parents: int loopback 0     
       
