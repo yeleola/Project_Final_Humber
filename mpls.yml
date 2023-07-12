@@ -99,7 +99,7 @@
                  - netw 172.27.2.0 0.0.0.3 area 0 
                  - netw 172.27.1.0 0.0.0.3 area 0
               
-            parents: router ospf 1
+             parents: router ospf 1
 
       - name: Enable mpls 
         ios_config: 
