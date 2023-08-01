@@ -281,7 +281,7 @@
 
       - name: RUN OSPF 
         ios_config: 
-#             provider: "{{ allrouters }}"
+## #            provider: "{{ allrouters }}"
              lines: 
                  - router-id 3.3.3.3
                  - netw 3.3.3.3 0.0.0.0 area 0
