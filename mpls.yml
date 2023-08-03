@@ -56,7 +56,7 @@
                  - ip cef 
                  
                  
-      - name: Configure s2/0
+      - name: Configure s1/0
         ios_config: 
 #             provider: "{{ allrouters }}"
              lines: 
@@ -64,7 +64,7 @@
                  - no shu
                  - mpls ip 
               
-             parents: int s2/0
+             parents: int s1/0
 
 
 
@@ -78,7 +78,7 @@
               
              parents: int loopback 0     
       
-      - name: Configure s2/1
+      - name: Configure s1/1
         ios_config: 
  #            provider: "{{ allrouters }}"
              lines: 
@@ -86,7 +86,7 @@
                  - no shu
                  - mpls ip 
               
-             parents: int s2/1
+             parents: int s1/1
 
        
                       
@@ -125,7 +125,7 @@
                  - ip cef 
 
   
-      - name: Configure s2/0
+      - name: Configure s1/0
         ios_config: 
   #            provider: "{{ allrouters }}"
               lines: 
@@ -133,7 +133,7 @@
                  - no shu
                  - mpls ip 
               
-              parents: int s2/0
+              parents: int s1/0
 
     
 
@@ -147,7 +147,7 @@
               
              
 
-      - name: Configure f0/0
+      - name: Configure f3/0
         ios_config: 
     #          provider: "{{ allrouters }}"
               lines: 
@@ -155,7 +155,7 @@
                  - ip add 10.10.20.1 255.255.255.252
                  - no shu
               
-              parents: int f0/0     
+              parents: int f3/0     
 
       - name: Configure loopback 0
         ios_config: 
@@ -232,7 +232,7 @@
                  - ip cef 
 
   
-      - name: Configure s2/0
+      - name: Configure s1/2
         ios_config: 
         #     provider: "{{ allrouters }}"
              lines: 
@@ -240,7 +240,7 @@
                  - no shu
                  - mpls ip 
               
-             parents: int s2/0
+             parents: int s1/2
 
       - name: Configure vrf for R3
         ios_config: 
@@ -252,7 +252,7 @@
               
              
 
-      - name: Configure f0/0
+      - name: Configure f3/0
         ios_config: 
           #   provider: "{{ allrouters }}"
              lines: 
@@ -260,7 +260,7 @@
                  - ip add 10.10.10.1 255.255.255.252
                  - no shu
               
-             parents: int f0/0     
+             parents: int f3/0     
 
       - name: Configure loopback 0
         ios_config: 
