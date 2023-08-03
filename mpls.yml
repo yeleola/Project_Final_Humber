@@ -120,7 +120,7 @@
 
       - name: Configure ip cef
         ios_config: 
-#             provider: "{{ allrouters }}"
+# #            provider: "{{ allrouters }}"
              lines: 
                  - ip cef 
 
