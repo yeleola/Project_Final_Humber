@@ -127,7 +127,7 @@
   
       - name: Configure s1/0
         ios_config: 
-  #   #       provider: "{{ allrouters }}"
+  #   #      provider: "{{ allrouters }}"
               lines: 
                  - ip add 172.27.1.2 255.255.255.252
                  - no shu
