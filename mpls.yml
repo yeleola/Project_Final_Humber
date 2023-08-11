@@ -193,7 +193,7 @@
 
       - name: Configure static route
         ios_config: 
-      #  #      provider: "{{ allrouters }}"
+      #  # #     provider: "{{ allrouters }}"
               lines: 
                           
                  - ip route vrf omoyele 192.168.200.0 255.255.255.0 10.10.20.2   
