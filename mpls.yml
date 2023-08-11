@@ -201,7 +201,7 @@
 
       - name: Configure BGP
         ios_config: 
-       #  #  ###   provider: "{{ allrouters }}"
+       #  # #   provider: "{{ allrouters }}"
               lines: 
                  - neig 3.3.3.3 remote-as 1
                  - neig 3.3.3.3 update-source loopback 0        
